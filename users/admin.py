@@ -1,16 +1,17 @@
 from django.contrib import admin
 
-from AVShop import models as shop
+from mytrello import models as my_trello
 from . import models
 
 
-class ProductsInline(admin.TabularInline):
-    model = shop.Product
+class CardsInline(admin.TabularInline):
+    model = my_trello.Card
+    fk_name = 'created_by_user'
     extra = 0
 
 
 class UserAdmin(admin.ModelAdmin):
-    inlines = [ProductsInline]
+    inlines = [CardsInline]
     list_display = ('username', 'token')
 
 

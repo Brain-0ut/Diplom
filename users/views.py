@@ -9,9 +9,9 @@ from django.urls import reverse
 from django.views import View
 from django.views.generic import DetailView
 
-from users.forms import RegisterForm, EmailConfirmForm
+from users.forms import RegisterForm
 from users.models import User
-from AVShop import models
+from mytrello import models
 
 from django import views
 
@@ -37,29 +37,15 @@ def logout(request):
     return redirect('/')
 
 
-def purchase_delete(request, purchase_id):
-    count = 0
-    if request.method == 'POST':
-        purchase = models.Purchase.objects.get(id=purchase_id)
-        count = models.Purchase.objects.count()
-        a = purchase.created_at + timedelta(minutes=3)
-        b = datetime.now().astimezone(timezone.utc)
-        print(str(purchase.created_at) + '|' + str(count) + '|' + str(a) + '|' + str(b))
-        if purchase.created_at + timedelta(minutes=3) >= datetime.now().astimezone(timezone.utc):
-            refund = models.Refund(purchase=purchase)
-            print(refund)
-    return redirect('/users/personal/', {'count': count})
-
-
 class UserInfo(View):
     template_name = 'users/personal_page.html'
 
     def get(self, request, *args, **kwargs):
-        confirm_form = None
-        purchase_list = models.Purchase.objects.filter(user=self.request.user.id)
-        count = models.Purchase.objects.count()
-        if not self.request.user.email_confirmed:
-            confirm_form = EmailConfirmForm()
+        # confirm_form = None
+        # purchase_list = models.Purchase.objects.filter(user=self.request.user.id)
+        # count = models.Purchase.objects.count()
+        # if not self.request.user.email_confirmed:
+        #     confirm_form = EmailConfirmForm()
         return render(request, self.template_name, {'confirm_form': confirm_form,
                                                     'purchase_list': purchase_list,
                                                     'count': count,

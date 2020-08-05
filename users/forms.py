@@ -19,5 +19,5 @@ class RegisterForm(forms.Form):
         return self.data['username']
 
 
-class EmailConfirmForm(forms.Form):
-    token = forms.CharField(max_length=32, required=True)
+# class EmailConfirmForm(forms.Form):
+#     token = forms.CharField(max_length=32, required=True)

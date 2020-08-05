@@ -5,10 +5,8 @@ from django.db import models
 
 
 class User(AbstractUser):
-    phone_number = models.CharField(max_length=15, blank=True, null=True)
     token = models.CharField(max_length=32, blank=True, null=True)
-    email_confirmed = models.BooleanField(default=False)
-    cash = models.PositiveSmallIntegerField(default=10000)
+    admin_confirmed = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         self.email = self.email.lower()

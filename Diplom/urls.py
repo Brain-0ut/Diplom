@@ -13,9 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from Diplom import settings
+from mytrello import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-]
+                  path('', views.index, name='homepage'),
+                  path('admin/', admin.site.urls),
+                  path('trello/', include('mytrello.urls')),
+                  path('users/', include('users.urls')),
+                  # path('about/', RedirectView.as_view(url='/AVShop/about_us')),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
