@@ -1,8 +1,9 @@
 from time import time
 
 from django.contrib import messages
+from django.shortcuts import redirect
 
-from users.views import logout
+from django.contrib.auth import logout
 
 SESSION_OFF_TIME = 300
 
@@ -29,6 +30,7 @@ class SessionExpiryHandleMiddleware:
 
         if idle > SESSION_OFF_TIME:
             logout(request)
+            return redirect('/')
         else:
             request.session['last_activity'] = now
             response = self.get_response(request)
