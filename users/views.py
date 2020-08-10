@@ -1,19 +1,32 @@
-from datetime import timedelta, datetime, timezone
-
 from django.contrib.auth import login, authenticate
 from django.contrib.auth import logout as logout_
-from django.http import HttpResponseRedirect
-
+from django.contrib.auth.views import LoginView
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.urls import reverse
-from django.views import View
-from django.views.generic import DetailView
+from django.views.generic import ListView
 
-from users.forms import RegisterForm
+from users import models
+from users.forms import RegisterForm, LoginForm
 from users.models import User
-from mytrello import models
 
-from django import views
+
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(username=cd['username'], password=cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('/')
+                else:
+                    return HttpResponse('Disabled account')
+            else:
+                return HttpResponse('Invalid login')
+    else:
+        form = LoginForm()
+    return render(request, 'users/login.html', {'form': form})
 
 
 def register(request):
@@ -37,27 +50,27 @@ def logout(request):
     return redirect('/')
 
 
-class UserInfo(View):
-    template_name = 'users/personal_page.html'
+def confirm(request):
+    pass
 
-    def get(self, request, *args, **kwargs):
-        # confirm_form = None
-        # purchase_list = models.Purchase.objects.filter(user=self.request.user.id)
-        # count = models.Purchase.objects.count()
-        # if not self.request.user.email_confirmed:
-        #     confirm_form = EmailConfirmForm()
-        return render(request, self.template_name, {'confirm_form': confirm_form,
-                                                    'purchase_list': purchase_list,
-                                                    'count': count,
-                                                    })
+
+class UserListView(ListView):
+    model = models.User
 
     def post(self, request, *args, **kwargs):
-        if self.request.POST.get('action') == 'confirm':
-            form = EmailConfirmForm(self.request.POST)
-            if form.is_valid():
-                if form.cleaned_data.get('token') == self.request.user.token:
-                    self.request.user.email_confirmed = True
-                    self.request.user.save()
-            else:
-                return render(self.request, self.template_name, {'confirm_form': form})
-        return HttpResponseRedirect(reverse('user_info'))
+        not_confirmed_user = models.User.objects.get(pk=request.POST.get('user_id'))
+        action = request.POST.get('action')
+        if action == 'confirm':
+            not_confirmed_user.admin_confirmed = True
+            not_confirmed_user.save()
+        not_confirmed = User.objects.filter(admin_confirmed=False).count()
+        if not_confirmed:
+            HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        return redirect('/')
+
+    def get(self, request, *args, **kwargs):
+        not_confirmed = User.objects.filter(admin_confirmed=False).count()
+        if not_confirmed:
+            super().get(self, request, *args, **kwargs)
+        else:
+            return redirect('/')

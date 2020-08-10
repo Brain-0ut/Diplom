@@ -3,10 +3,10 @@ from . import models
 
 
 class RegisterForm(forms.Form):
-    username = forms.CharField(required=True)
-    email = forms.EmailField(required=True)
-    password = forms.CharField(required=True, widget=forms.PasswordInput)
-    password2 = forms.CharField(required=True, widget=forms.PasswordInput)
+    username = forms.CharField(required=True, label='Ім`я користувача')
+    email = forms.EmailField(required=True, label='Ваш є-мейл')
+    password = forms.CharField(required=True, widget=forms.PasswordInput, label='Виберіть пароль')
+    password2 = forms.CharField(required=True, widget=forms.PasswordInput, label='Повторіть пароль')
 
     def clean_password(self):
         if self.data['password'] != self.data['password2']:
@@ -19,5 +19,6 @@ class RegisterForm(forms.Form):
         return self.data['username']
 
 
-# class EmailConfirmForm(forms.Form):
-#     token = forms.CharField(max_length=32, required=True)
+class LoginForm(forms.Form):
+    username = forms.CharField(required=True, label='Введіть ім`я користувача')
+    password = forms.CharField(required=True, widget=forms.PasswordInput, label='Введіть пароль')

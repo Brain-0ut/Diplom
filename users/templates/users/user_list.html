@@ -1,0 +1,24 @@
+{% extends 'mytrello/base.html' %}
+
+{% block title %}Підтвердження нових зареєстрованих користувачів{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Користувачі, що очікують на підтвердження</h4>
+            {% for user in user_list %}
+                {% if user.admin_confirmed == False %}
+                    <h6>Користувач: {{ user.username }} </h6>
+                    <td>
+                        <form action="" method="post">
+                            <input type="hidden" name="user_id" value="{{ user.id }}">
+                            <button class="btn btn-success" type="submit" name="action" value="confirm">Підтвердити
+                            </button>
+                            {% csrf_token %}
+                        </form>
+                    </td>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
