@@ -3,6 +3,9 @@ from django.urls import path
 from mytrello import views
 
 urlpatterns = [
+    path('', views.Index.as_view(), name='homepage'),
+    path('new/', views.NewCardView.as_view(), name='new_card'),
+    path('mytrello/<int:pk>/edit', views.CardEdit.as_view(), name='edit_card'),
     # path('', views.ProductsListView.as_view(), name='all_products'),
     # path('delete/<int:pk>', views.ProductDelete.as_view(), name='product_delete'),
     # path('create/', views.ProductCreate.as_view(), name='new_product'),

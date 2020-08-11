@@ -3,115 +3,224 @@
 
 {% block content %}
     <div class="container">
-        <div class="row row-cols-5 d-flex">
-            <div class="col">
-                <h5 class="card-header text-center mb-1 border border-secondary rounded-pill">Нові</h5>
-                <div class="card bg-light mb-1" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Warning card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                    <div class="card-footer bg-transparent text-right">
-                        <span style="color: #64ff00;">
-                            <i class="far fa-arrow-alt-circle-right fa-2x"></i>
+        {% if user.is_authenticated %}
+            {% if user.admin_confirmed == True %}
+                <div class="row row-cols-5 d-flex m-2">
+                    <div class="col">
+                        <h5 class="card-header text-center mb-1 border border-secondary rounded-pill">
+                            <a href="{% url 'new_card' %}"><i class="far fa-plus-square fa-lg" data-toggle="popover" data-trigger="hover"
+                                          data-content="Додати нову картку"></i></a>
+                            Нові
+                            <a href="{% url 'new_card' %}"><i class="far fa-plus-square fa-lg" data-toggle="popover" data-trigger="hover"
+                                          data-content="Додати нову картку"></i></a>
+                        </h5>
+
+                        <div class="card bg-light mb-1" style="max-width: 18rem;">
+                            <div class="card-header">
+                                <div class="row row-cols-3 d-flex">
+                                    <div class="col text-left">
+                                    </div>
+                                    <div class="col text-center">
+                                <span style="color: #3b3f44;" data-toggle="popover" data-trigger="hover"
+                                      data-content="Редагувати">
+{#                                    <a href="{% url 'edit_card' card.id %}"><i class="fas fa-edit fa-2x"></i></a>#}
+                                </span>
+                                    </div>
+                                    <div class="col text-right">
+                                <span style="color: #17a2b8;">
+                                    <i class="far fa-arrow-alt-circle-right fa-2x"></i>
+                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Warning card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of
+                                    the card's content.</p>
+                            </div>
+                            <div class="card-footer bg-transparent text-center">
+                        <span style="color: darkred;" data-toggle="popover" data-trigger="hover"
+                              data-content="Видалити картку">
+                            <i class="fas fa-trash fa-2x"></i>
                         </span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="card bg-light mb-1" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Warning card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                    <div class="card-footer bg-transparent text-right">
-                        <span style="color: #64ff00;">
-                            <i class="far fa-arrow-alt-circle-right fa-2x"></i>
+
+
+                    <div class="col">
+                        <h5 class="card-header bg-info text-center mb-1 border border-secondary rounded-pill">В
+                            роботі</h5>
+                        <div class="card text-white bg-info mb-1" style="max-width: 18rem;">
+                            <div class="card-header">
+                                <div class="row row-cols-3 d-flex">
+                                    <div class="col text-left">
+                                <span style="color: #f8f9fa;">
+                                <i class="far fa-arrow-alt-circle-left fa-2x"></i>
+                                </span>
+                                    </div>
+                                    <div class="col text-center">
+                                <span style="color: #f8f9fa;" data-toggle="popover" data-trigger="hover"
+                                      data-content="Редагувати">
+                                <i class="fas fa-edit fa-2x"></i>
+                                </span>
+                                    </div>
+                                    <div class="col text-right">
+                                <span style="color: #ffc107;">
+                                <i class="far fa-arrow-alt-circle-right fa-2x"></i>
+                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Info card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of
+                                    the card's content.</p>
+                            </div>
+                            <div class="card-footer bg-transparent text-center">
+                        <span style="color: darkred;" data-toggle="popover" data-trigger="hover"
+                              data-content="Видалити картку">
+                            <i class="fas fa-trash fa-2x"></i>
                         </span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col">
-                <h5 class="card-header bg-info text-center mb-1 border border-secondary rounded-pill">В роботі</h5>
-                <div class="card text-white bg-info mb-1" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Info card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                    <div class="card-footer bg-transparent">
-                        <span style="color: #64ff00;">
-                            <i class="far fa-arrow-alt-circle-left fa-2x text-left"></i>
+
+
+                    <div class="col">
+                        <h5 class="card-header bg-warning text-center mb-1 border border-secondary rounded-pill">На
+                            перевірці</h5>
+                        <div class="card text-white bg-warning mb-1" style="max-width: 18rem;">
+                            <div class="card-header">
+                                <div class="row row-cols-3 d-flex">
+                                    <div class="col text-left">
+                                <span style="color: #17a2b8;">
+                                <i class="far fa-arrow-alt-circle-left fa-2x text-left"></i>
+                                </span>
+                                    </div>
+                                    <div class="col text-center">
+                                <span style="color: #f8f9fa;" data-toggle="popover" data-trigger="hover"
+                                      data-content="Редагувати">
+                                <i class="fas fa-edit fa-2x"></i>
+                                </span>
+                                    </div>
+                                    <div class="col text-right">
+                                <span style="color: #28a745;">
+                                <i class="far fa-arrow-alt-circle-right fa-2x"></i>
+                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Warning card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk
+                                    of
+                                    the card's content.</p>
+                            </div>
+                            <div class="card-footer bg-transparent text-center">
+                        <span style="color: darkred;" data-toggle="popover" data-trigger="hover"
+                              data-content="Видалити картку">
+                            <i class="fas fa-trash fa-2x"></i>
                         </span>
-                         <div class="text-right">
-                             <span style="color: #64ff00;">
-                            <i class="far fa-arrow-alt-circle-right fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col">
+                        <h5 class="card-header bg-success text-center mb-1 border border-secondary rounded-pill">
+                            Готові</h5>
+                        <div class="card text-white bg-success mb-1" style="max-width: 18rem;">
+                            <div class="card-header">
+                                <div class="row row-cols-2 d-flex">
+                                    <div class="col text-left">
+                                <span style="color: #ffc107;">
+                                <i class="far fa-arrow-alt-circle-left fa-2x text-left"></i>
+                                </span>
+                                    </div>
+                                    <div class="col text-right">
+                                <span style="color: #3b3f44;">
+                                <i class="far fa-arrow-alt-circle-right fa-2x"></i>
+                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Success card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk
+                                    of
+                                    the card's content.</p>
+                            </div>
+                            <div class="card-footer bg-transparent text-center">
+                        <span style="color: darkred;" data-toggle="popover" data-trigger="hover"
+                              data-content="Видалити картку">
+                            <i class="fas fa-trash fa-2x"></i>
                         </span>
-                         </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col">
+                        <h5 class="card-header bg-secondary text-center mb-1 border border-secondary rounded-pill">
+                            Завершені</h5>
+                        <div class="card text-white bg-secondary mb-1" style="max-width: 18rem;">
+                            <div class="card-header">
+                        <span style="color: #28a745;">
+                            <i class="far fa-arrow-alt-circle-left fa-2x"></i>
+                        </span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Secondary card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk
+                                    of
+                                    the card's content.</p>
+                            </div>
+                            <div class="card-footer bg-transparent text-center">
+                        <span style="color: darkred;" data-toggle="popover" data-trigger="hover"
+                              data-content="Видалити картку">
+                            <i class="fas fa-trash fa-2x"></i>
+                        </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <h5 class="card-header bg-warning text-center mb-1 border border-secondary rounded-pill">На
-                    перевірці</h5>
-                <div class="card text-white bg-warning mb-1" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Warning card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <h5 class="card-header bg-success text-center mb-1 border border-secondary rounded-pill">Готові</h5>
-                <div class="card text-white bg-success mb-1" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Success card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <h5 class="card-header bg-secondary text-center mb-1 border border-secondary rounded-pill">
-                    Завершені</h5>
-                <div class="card text-white bg-secondary mb-1" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Secondary card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% for card in context %}
-            {#          <div class="col mb-4">#}
-            {#            <div class="card h-100">#}
-            {#                <a href="{% url 'product_by_id' product.id %}">#}
-            {#                    <img src="{{ product.picture.url }}" class="card-img-top" alt="{{ product.title }}">#}
-            {#                </a>#}
-            {#              <div class="card-body">#}
-            {#                <h5 class="card-title">{{ product.title }}</h5>#}
-            {#                <p class="card-text">{{ product.description | truncatechars:200 }}</p>#}
-            {#                    {% if user.is_superuser %}#}
-            {#                        <a href="{% url 'edit_product' product.id %}"><button type="button" class="btn-primary btn-sm" >Змінити</button></a>#}
-            {#                    {% endif %}#}
-            {#              </div>#}
-            {#                <div class="card-footer">#}
-            {#                    <small class="text-muted text-left">Ціна: {{ product.price }}</small>#}
-            {#                    {% if user.is_authenticated %}#}
-            {#                        <a href="{% url 'product_by_id' product.id %}" class="col-sm-3"><button type="button" class="btn-success btn-sm" >Купити</button></a>#}
-            {#                    {% endif %}#}
-            {#                </div>#}
-            {#            </div>#}
-            {#          </div>#}
-        {% endfor %}
+                {% for card in context %}
+                    {#          <div class="col mb-4">#}
+                    {#            <div class="card h-100">#}
+                    {#                <a href="{% url 'product_by_id' product.id %}">#}
+                    {#                    <img src="{{ product.picture.url }}" class="card-img-top" alt="{{ product.title }}">#}
+                    {#                </a>#}
+                    {#              <div class="card-body">#}
+                    {#                <h5 class="card-title">{{ product.title }}</h5>#}
+                    {#                <p class="card-text">{{ product.description | truncatechars:200 }}</p>#}
+                    {#                    {% if user.is_superuser %}#}
+                    {#                        <a href="{% url 'edit_product' product.id %}"><button type="button" class="btn-primary btn-sm" >Змінити</button></a>#}
+                    {#                    {% endif %}#}
+                    {#              </div>#}
+                    {#                <div class="card-footer">#}
+                    {#                    <small class="text-muted text-left">Ціна: {{ product.price }}</small>#}
+                    {#                    {% if user.is_authenticated %}#}
+                    {#                        <a href="{% url 'product_by_id' product.id %}" class="col-sm-3"><button type="button" class="btn-success btn-sm" >Купити</button></a>#}
+                    {#                    {% endif %}#}
+                    {#                </div>#}
+                    {#            </div>#}
+                    {#          </div>#}
+                {% endfor %}
+            {% endif %}
+        {% endif %}
     </div>
 
+{% endblock %}
+{% block extrajs %}
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+    </script>
 {% endblock %}

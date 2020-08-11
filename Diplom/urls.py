@@ -25,10 +25,10 @@ router = routers.DefaultRouter()
 # router.register(r'users', UserViewSet)
 
 urlpatterns = [
-                  path('', views.index, name='homepage'),
+                  path('', views.index, name='index'),
                   path('api/', include(router.urls)),
                   path('admin/', admin.site.urls),
-                  path('trello/', include('mytrello.urls')),
+                  path('mytrello/', include('mytrello.urls')),
                   path('users/', include('users.urls')),
                   # path('about/', RedirectView.as_view(url='/Diplom/about_us')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
