@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 import django_heroku
+import dj_database_url
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,12 +22,14 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '5awx+i^4w$*8@ggmsuenxf3-73cx7yjzvsutd6++bs!0l1s50%'
+# SECRET_KEY = '5awx+i^4w$*8@ggmsuenxf3-73cx7yjzvsutd6++bs!0l1s50%'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '5awx+i^4w$*8@ggmsuenxf3-73cx7yjzvsutd6++bs!0l1s50%')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pacific-castle-55523.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
@@ -43,6 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -131,3 +136,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap'
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+# Heroku: Update database configuration from $DATABASE_URL.
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
