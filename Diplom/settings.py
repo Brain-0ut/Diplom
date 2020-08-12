@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '5awx+i^4w$*8@ggmsuenxf3-73cx7y
 # DEBUG = True
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = ['pacific-castle-55523.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['trello-my.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
