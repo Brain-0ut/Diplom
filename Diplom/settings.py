@@ -81,10 +81,20 @@ WSGI_APPLICATION = 'Diplom.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'da4ulu0r9q2h3j',
+        'USER': 'abmonkwklqgrew',
+        'PASSWORD': '0d6ca96b1f6418ea2618929f394a1776f49f9a7237a72ef83d736ba6adefb7f2',
+        'HOST': 'ec2-18-232-143-90.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
