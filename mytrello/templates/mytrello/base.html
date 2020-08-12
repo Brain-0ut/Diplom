@@ -22,7 +22,7 @@
                 <li class="nav-item active">
                 <a  href="{% url 'confirmation' %}">
                 <button type="button" class="btn badge-pill btn-warning">В очікуванні
-                    <span class="badge badge-pill badge-light">{% if not_comfirmed %}{{ not_comfirmed }}{% else %}0{% endif %}</span>
+                    <span class="badge badge-pill badge-light">{% if view.not_confirmed %}{{ view.not_confirmed }}{% else %}0{% endif %}</span>
                     <span class="sr-only">чекають підтвердження</span>
                 </button>
                 </a>

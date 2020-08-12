@@ -28,7 +28,7 @@ class SessionExpiryHandleMiddleware:
         now = time()
         idle = now - last_activity if last_activity else 0
 
-        if idle > SESSION_OFF_TIME:
+        if idle > SESSION_OFF_TIME and not request.user.is_superuser:
             logout(request)
             return redirect('/')
         else:

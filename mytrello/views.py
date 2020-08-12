@@ -1,7 +1,8 @@
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import UpdateView, ListView, CreateView
+from django.views.generic import UpdateView, ListView, CreateView, DeleteView
 
 from mytrello import forms
 from mytrello.models import Card
@@ -11,36 +12,51 @@ from users.models import User
 def index(request):
     if request.user.id:
         user = User.objects.get(id=request.user.id)
-        not_confirmed = User.objects.filter(admin_confirmed=False).count()
+        # not_confirmed = User.objects.filter(admin_confirmed=False).count()
         if request.user.is_authenticated and user.admin_confirmed:
-            context = Card.objects.filter(created_by_user=user.id)
-            return redirect('homepage') # render(request, 'mytrello/index.html', {'context': context, 'not_confirmed': not_confirmed})
+            # context = Card.objects.filter(created_by_user=user.id)
+            return redirect('homepage')
+            # return render(request, 'mytrello/index.html', {'context': context, 'not_confirmed': not_confirmed})
     return render(request, 'users/index.html')
 
 
 class Index(ListView):
     model = Card
     template_name = 'mytrello/index.html'
+    not_confirmed = User.objects.filter(admin_confirmed=False).count()
 
-    @staticmethod
+    def _filter(self, q):
+        return q.filter(Q(assigned_to_user=self.request.user) | Q(created_by_user=self.request.user))
+
     def new(self):
-        return Card.objects.filter(status='New')
+        q = Card.objects.filter(status=1)
+        if not self.request.user.is_superuser:
+            q = self._filter(q)
+        return q
 
-    @staticmethod
     def in_progress(self):
-        return Card.objects.filter(status='In progress')
+        q = Card.objects.filter(status=2)
+        if not self.request.user.is_superuser:
+            q = self._filter(q)
+        return q
 
-    @staticmethod
     def in_qa(self):
-        return Card.objects.filter(status='In QA')
+        q = Card.objects.filter(status=3)
+        if not self.request.user.is_superuser:
+            q = self._filter(q)
+        return q
 
-    @staticmethod
     def ready(self):
-        return Card.objects.filter(status='Ready')
+        q = Card.objects.filter(status=4)
+        if not self.request.user.is_superuser:
+            q = self._filter(q)
+        return q
 
-    @staticmethod
     def done(self):
-        return Card.objects.filter(status='Done')
+        q = Card.objects.filter(status=5)
+        if not self.request.user.is_superuser:
+            q = self._filter(q)
+        return q
 
     def post(self, request, *args, **kwargs):
         card_id = request.POST.get('card_id', '')
@@ -75,7 +91,7 @@ class NewCardView(CreateView):
         return form
 
 
-class CardEdit(UpdateView):
+class EditCard(UpdateView):
     model = Card
     form_class = forms.CardForm
     success_url = reverse_lazy('index')
@@ -86,3 +102,10 @@ class CardEdit(UpdateView):
         if not self.request.user.is_superuser:
             form.fields['assigned_to_user'].queryset = User.objects.filter(id=self.request.user.id)
         return form
+
+
+class DeleteCard(DeleteView):
+    model = Card
+    form_class = forms.CardForm
+    success_url = reverse_lazy('index')
+    template_name = 'mytrello/delete_card.html'

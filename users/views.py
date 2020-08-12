@@ -56,6 +56,8 @@ def confirm(request):
 
 class UserListView(ListView):
     model = models.User
+    template_name = 'users/user_list.html'
+    not_confirmed = User.objects.filter(admin_confirmed=False).count()
 
     def post(self, request, *args, **kwargs):
         not_confirmed_user = models.User.objects.get(pk=request.POST.get('user_id'))
@@ -69,8 +71,7 @@ class UserListView(ListView):
         return redirect('/')
 
     def get(self, request, *args, **kwargs):
-        not_confirmed = User.objects.filter(admin_confirmed=False).count()
-        if not_confirmed:
-            super().get(self, request, *args, **kwargs)
+        if self.not_confirmed:
+            return super().get(self, request, *args, **kwargs)
         else:
             return redirect('/')

@@ -1,0 +1,27 @@
+{% extends 'mytrello/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Видалення картки{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="card m-1">
+                    <div class="card-body">
+                        <h4 class="card-title">Видалення картки</h4>
+
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ next }}">
+
+                            {{ form|crispy }}
+                            <p>Ви впевненні, що хочете видалити цю картку?</p>
+                            <button type="submit" class="btn btn-primary btn-block">Видалити</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
