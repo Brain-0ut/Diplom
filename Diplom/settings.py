@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '5awx+i^4w$*8@ggmsuenxf3-73cx7y
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', False))
 
 ALLOWED_HOSTS = ['trello-my.herokuapp.com', '127.0.0.1']
 
