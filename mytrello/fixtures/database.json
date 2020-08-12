@@ -1,0 +1,342 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2020-08-09T17:44:00.981Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "admin",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Admin confirmed\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2020-08-11T11:35:01.832Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "1",
+    "object_repr": "Card object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2020-08-11T11:36:04.300Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "2",
+    "object_repr": "Card object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2020-08-11T11:37:34.833Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "3",
+    "object_repr": "Card object (3)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2020-08-11T11:38:19.366Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "4",
+    "object_repr": "Card object (4)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2020-08-11T11:42:06.543Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "5",
+    "object_repr": "Card object (5)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2020-08-11T11:44:48.031Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "6",
+    "object_repr": "Card object (6)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2020-08-11T11:45:00.646Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "7",
+    "object_repr": "Card object (7)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2020-08-11T14:40:24.431Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "10",
+    "object_repr": "Card object (10)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Created by user\"]}}]"
+  }
+},
+{
+  "model": "mytrello.card",
+  "pk": 1,
+  "fields": {
+    "created_by_user": null,
+    "assigned_to_user": null,
+    "title": "Дизайн",
+    "description": "Зробити чорновий варіант дизайну дипломного проекту",
+    "status": 4,
+    "created_at": "2020-08-11T11:35:01.831Z",
+    "updated_at": "2020-08-11T19:05:04.880Z"
+  }
+},
+{
+  "model": "mytrello.card",
+  "pk": 2,
+  "fields": {
+    "created_by_user": null,
+    "assigned_to_user": null,
+    "title": "Бутстрап",
+    "description": "Розібратися зі стилями Бутстрапу",
+    "status": 3,
+    "created_at": "2020-08-11T11:36:04.298Z",
+    "updated_at": "2020-08-11T19:04:54.640Z"
+  }
+},
+{
+  "model": "mytrello.card",
+  "pk": 3,
+  "fields": {
+    "created_by_user": null,
+    "assigned_to_user": null,
+    "title": "Крутий шрифт",
+    "description": "Розібратися з Awesome Font і додати іконок у дизайн",
+    "status": 2,
+    "created_at": "2020-08-11T11:37:34.831Z",
+    "updated_at": "2020-08-11T23:44:50.209Z"
+  }
+},
+{
+  "model": "mytrello.card",
+  "pk": 4,
+  "fields": {
+    "created_by_user": null,
+    "assigned_to_user": null,
+    "title": "Користувачі",
+    "description": "Трохи переробити логіку роботи з користувачами",
+    "status": 4,
+    "created_at": "2020-08-11T11:38:19.364Z",
+    "updated_at": "2020-08-11T19:41:00.663Z"
+  }
+},
+{
+  "model": "mytrello.card",
+  "pk": 5,
+  "fields": {
+    "created_by_user": null,
+    "assigned_to_user": null,
+    "title": "Моделі",
+    "description": "Продумати моделі для проекту",
+    "status": 1,
+    "created_at": "2020-08-11T11:42:06.542Z",
+    "updated_at": "2020-08-11T11:42:06.542Z"
+  }
+},
+{
+  "model": "mytrello.card",
+  "pk": 6,
+  "fields": {
+    "created_by_user": null,
+    "assigned_to_user": null,
+    "title": "Тест",
+    "description": "Title is enough",
+    "status": 1,
+    "created_at": "2020-08-11T11:44:48.029Z",
+    "updated_at": "2020-08-11T11:44:48.029Z"
+  }
+},
+{
+  "model": "mytrello.card",
+  "pk": 7,
+  "fields": {
+    "created_by_user": null,
+    "assigned_to_user": null,
+    "title": "Тест1",
+    "description": "Title is enough",
+    "status": 5,
+    "created_at": "2020-08-11T11:45:00.644Z",
+    "updated_at": "2020-08-11T23:41:14.614Z"
+  }
+},
+{
+  "model": "mytrello.card",
+  "pk": 8,
+  "fields": {
+    "created_by_user": null,
+    "assigned_to_user": null,
+    "title": "Тестова від админа",
+    "description": "Title is enough",
+    "status": 1,
+    "created_at": "2020-08-11T13:13:44.341Z",
+    "updated_at": "2020-08-11T19:07:14.327Z"
+  }
+},
+{
+  "model": "mytrello.card",
+  "pk": 9,
+  "fields": {
+    "created_by_user": null,
+    "assigned_to_user": null,
+    "title": "From test1 user",
+    "description": "Title is enough",
+    "status": 1,
+    "created_at": "2020-08-11T14:05:15.977Z",
+    "updated_at": "2020-08-11T14:05:15.987Z"
+  }
+},
+{
+  "model": "mytrello.card",
+  "pk": 10,
+  "fields": {
+    "created_by_user": null,
+    "assigned_to_user": null,
+    "title": "from admin",
+    "description": "Title is enough",
+    "status": 1,
+    "created_at": "2020-08-11T14:09:58.786Z",
+    "updated_at": "2020-08-11T14:40:33.081Z"
+  }
+},
+{
+  "model": "mytrello.card",
+  "pk": 12,
+  "fields": {
+    "created_by_user": null,
+    "assigned_to_user": null,
+    "title": "From test2",
+    "description": "TEST2",
+    "status": 1,
+    "created_at": "2020-08-11T22:04:06.772Z",
+    "updated_at": "2020-08-11T22:04:06.779Z"
+  }
+},
+{
+  "model": "users.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$wHLLKnwzpeJR$FBJ5hSwnBV4MPQCjs1egf822ZrdI0seJGtExs+FV7uk=",
+    "last_login": "2020-08-12T15:04:04.503Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@mytrello.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2020-08-05T14:40:57Z",
+    "token": "ae4e61b31bac45cd9a4d45d5a90ddde0",
+    "admin_confirmed": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$4jqEt2dclWQD$M+/yqn7bzlBzm0RXle7Nd6+M6d9Kzp3b4Wp10MaGMeA=",
+    "last_login": "2020-08-11T23:28:01.881Z",
+    "is_superuser": false,
+    "username": "test1",
+    "first_name": "",
+    "last_name": "",
+    "email": "test1@test.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-08-10T11:40:43.229Z",
+    "token": "d2fa2a175f6e424e97f375f2a80c45a4",
+    "admin_confirmed": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$hIzuc2trib9b$y32sA5NBROnMYv882OxH9v+Pf1Lbd8BMzP8DFOzNIXU=",
+    "last_login": "2020-08-11T22:37:00.084Z",
+    "is_superuser": false,
+    "username": "test2",
+    "first_name": "",
+    "last_name": "",
+    "email": "test2@mytrello.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-08-11T19:42:51.806Z",
+    "token": "29a8af5e35ad40aab52efd18cc6bc154",
+    "admin_confirmed": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$DFWAmWPh0tHf$ggY5Z/kNnsIiQ9kToENs8rtB+gm1SIEFjbeIxzEoQgE=",
+    "last_login": "2020-08-11T23:46:29.475Z",
+    "is_superuser": false,
+    "username": "test3",
+    "first_name": "",
+    "last_name": "",
+    "email": "test3@mytrello.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-08-11T23:45:49.713Z",
+    "token": "fd363228d87b43c7a75b208d8da81881",
+    "admin_confirmed": true,
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
