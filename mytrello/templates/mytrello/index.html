@@ -2,7 +2,7 @@
 
 
 {% block content %}
-    <div class="container">
+    <div class="container-fluid">
         {% if user.is_authenticated %}
             {% if user.admin_confirmed == True %}
                 <div class="row row-cols-5 d-flex m-2">
@@ -26,7 +26,7 @@
                         </h5>
                         {% for card in view.new %}
                             {% if user == card.assigned_to_user or user == card.created_by_user or user.is_superuser %}
-                                <div class="card bg-light mb-1" style="max-width: 18rem;">
+                                <div class="card bg-light mb-1">
                                     <div class="card-header">
                                         <div class="row row-cols-3 d-flex">
                                             <div class="col text-left">
@@ -59,13 +59,13 @@
                                         <p class="card-text">{{ card.description }}</p>
                                     </div>
                                     {% if user.is_superuser %}
-                                        <div class="card-footer bg-transparent">
+                                        <div class="card-footer bg-transparent  pr-3 pt-2">
                                          <div class="row">
-                                            <div class="col-md-auto text-left badge text-wrap">
+                                            <div class="col-md-auto text-left badge text-wrap" style="height: 0px;">
                                                 <p>Створив: {{ card.created_by_user }}<br>
                                                 Виконавець: {{ card.assigned_to_user }}</p>
                                             </div>
-                                            <div class="col text-right">
+                                            <div class="col text-right pt-1">
                                                 <span data-toggle="popover" data-trigger="hover"
                                                   data-content="Видалити картку">
                                                 <a href="{% url 'delete_card' card.id %}">
@@ -81,7 +81,7 @@
                                 </div>
                             {% endif %}
                         {% empty %}
-                            <div class="card bg-light mb-1" style="max-width: 18rem;">
+                            <div class="card bg-light mb-1">
                                 <div class="card-body">
                                     <h5 class="card-title text-center">Пусто</h5>
                                     <p class="card-text">В цій категорії зараз немає карток</p>
@@ -96,7 +96,7 @@
                         роботі</h5>
                         {% for card in view.in_progress %}
                             {% if user == card.assigned_to_user or user == card.created_by_user or user.is_superuser %}
-                                <div class="card text-white bg-info mb-1" style="max-width: 18rem;">
+                                <div class="card text-white bg-info mb-1">
                         <div class="card-header">
                             <div class="row row-cols-3 d-flex">
                                 <div class="col">
@@ -142,13 +142,13 @@
                             <p class="card-text">{{ card.description }}</p>
                         </div>
                                     {% if user.is_superuser %}
-                                        <div class="card-footer bg-transparent">
+                                        <div class="card-footer bg-transparent  pr-3 pt-2">
                                          <div class="row">
-                                            <div class="col-md-auto text-left badge text-wrap">
+                                            <div class="col-md-auto text-left badge text-wrap" style="height: 0px;">
                                                 <p>Створив: {{ card.created_by_user }}<br>
                                                 Виконавець: {{ card.assigned_to_user }}</p>
                                             </div>
-                                            <div class="col text-right">
+                                            <div class="col text-right pt-1">
                                                 <span data-toggle="popover" data-trigger="hover"
                                                   data-content="Видалити картку">
                                                 <a href="{% url 'delete_card' card.id %}">
@@ -179,7 +179,7 @@
                         перевірці</h5>
                         {% for card in view.in_qa %}
                             {% if user == card.assigned_to_user or user == card.created_by_user or user.is_superuser %}
-                                <div class="card text-white bg-warning mb-1" style="max-width: 18rem;">
+                                <div class="card text-white bg-warning mb-1">
                         <div class="card-header">
                             <div class="row row-cols-3 d-flex">
                                 <div class="col text-left">
@@ -223,13 +223,13 @@
                             <p class="card-text">{{ card.description }}</p>
                         </div>
                                     {% if user.is_superuser %}
-                                        <div class="card-footer bg-transparent">
+                                        <div class="card-footer bg-transparent  pr-3 pt-2">
                                          <div class="row">
-                                            <div class="col-md-auto text-left badge text-wrap">
+                                            <div class="col-md-auto text-left badge text-wrap" style="height: 0px;">
                                                 <p>Створив: {{ card.created_by_user }}<br>
                                                 Виконавець: {{ card.assigned_to_user }}</p>
                                             </div>
-                                            <div class="col text-right">
+                                            <div class="col text-right pt-1">
                                                 <span data-toggle="popover" data-trigger="hover"
                                                   data-content="Видалити картку">
                                                 <a href="{% url 'delete_card' card.id %}">
@@ -260,7 +260,7 @@
                         Готові</h5>
                         {% for card in view.ready %}
                             {% if user == card.assigned_to_user or user == card.created_by_user or user.is_superuser %}
-                                <div class="card text-white bg-success mb-1" style="max-width: 18rem;">
+                                <div class="card text-white bg-success mb-1">
                         <div class="card-header">
                              <div class="row row-cols-3 d-flex">
                                 <div class="col text-left">
@@ -304,13 +304,13 @@
                             <p class="card-text">{{ card.description }}</p>
                                 </div>
                                     {% if user.is_superuser %}
-                                        <div class="card-footer bg-transparent">
+                                        <div class="card-footer bg-transparent  pr-3 pt-2">
                                          <div class="row">
-                                            <div class="col-md-auto text-left badge text-wrap">
+                                            <div class="col-md-auto text-left badge text-wrap" style="height: 0px;">
                                                 <p>Створив: {{ card.created_by_user }}<br>
                                                 Виконавець: {{ card.assigned_to_user }}</p>
                                             </div>
-                                            <div class="col text-right">
+                                            <div class="col text-right pt-1">
                                                 <span data-toggle="popover" data-trigger="hover"
                                                   data-content="Видалити картку">
                                                 <a href="{% url 'delete_card' card.id %}">
@@ -341,7 +341,7 @@
                         Завершені</h5>
                         {% for card in view.done %}
                             {% if user == card.assigned_to_user or user == card.created_by_user or user.is_superuser %}
-                                <div class="card text-white bg-secondary mb-1" style="max-width: 18rem;">
+                                <div class="card text-white bg-secondary mb-1">
                                     <div class="card-header">
                                          <div class="row row-cols-3 d-flex">
                                             <div class="col text-left">
@@ -374,13 +374,13 @@
                                         <p class="card-text">{{ card.description }}</p>
                                     </div>
                                     {% if user.is_superuser %}
-                                        <div class="card-footer bg-transparent">
+                                        <div class="card-footer bg-transparent  pr-3 pt-2">
                                          <div class="row">
-                                            <div class="col-md-auto text-left badge text-wrap">
+                                            <div class="col-md-auto text-left badge text-wrap" style="height: 0px;">
                                                 <p>Створив: {{ card.created_by_user }}<br>
                                                 Виконавець: {{ card.assigned_to_user }}</p>
                                             </div>
-                                            <div class="col text-right">
+                                            <div class="col text-right pt-1">
                                                 <span data-toggle="popover" data-trigger="hover"
                                                   data-content="Видалити картку">
                                                 <a href="{% url 'delete_card' card.id %}">

@@ -5,4 +5,4 @@ from mytrello.models import Card
 class CardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
-        fields = ('__all__')
+        exclude = ['created_at']
