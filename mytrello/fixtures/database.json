@@ -122,8 +122,8 @@
   "fields": {
     "created_by_user": null,
     "assigned_to_user": null,
-    "title": "Дизайн",
-    "description": "Зробити чорновий варіант дизайну дипломного проекту",
+    "title": "Р”РёР·Р°Р№РЅ",
+    "description": "Р—СЂРѕР±РёС‚Рё С‡РѕСЂРЅРѕРІРёР№ РІР°СЂС–Р°РЅС‚ РґРёР·Р°Р№РЅСѓ РґРёРїР»РѕРјРЅРѕРіРѕ РїСЂРѕРµРєС‚Сѓ",
     "status": 4,
     "created_at": "2020-08-11T11:35:01.831Z",
     "updated_at": "2020-08-11T19:05:04.880Z"
@@ -135,8 +135,8 @@
   "fields": {
     "created_by_user": null,
     "assigned_to_user": null,
-    "title": "Бутстрап",
-    "description": "Розібратися зі стилями Бутстрапу",
+    "title": "Р‘СѓС‚СЃС‚СЂР°Рї",
+    "description": "Р РѕР·С–Р±СЂР°С‚РёСЃСЏ Р·С– СЃС‚РёР»СЏРјРё Р‘СѓС‚СЃС‚СЂР°РїСѓ",
     "status": 3,
     "created_at": "2020-08-11T11:36:04.298Z",
     "updated_at": "2020-08-11T19:04:54.640Z"
@@ -148,8 +148,8 @@
   "fields": {
     "created_by_user": null,
     "assigned_to_user": null,
-    "title": "Крутий шрифт",
-    "description": "Розібратися з Awesome Font і додати іконок у дизайн",
+    "title": "РљСЂСѓС‚РёР№ С€СЂРёС„С‚",
+    "description": "Р РѕР·С–Р±СЂР°С‚РёСЃСЏ Р· Awesome Font С– РґРѕРґР°С‚Рё С–РєРѕРЅРѕРє Сѓ РґРёР·Р°Р№РЅ",
     "status": 2,
     "created_at": "2020-08-11T11:37:34.831Z",
     "updated_at": "2020-08-11T23:44:50.209Z"
@@ -161,8 +161,8 @@
   "fields": {
     "created_by_user": null,
     "assigned_to_user": null,
-    "title": "Користувачі",
-    "description": "Трохи переробити логіку роботи з користувачами",
+    "title": "РљРѕСЂРёСЃС‚СѓРІР°С‡С–",
+    "description": "РўСЂРѕС…Рё РїРµСЂРµСЂРѕР±РёС‚Рё Р»РѕРіС–РєСѓ СЂРѕР±РѕС‚Рё Р· РєРѕСЂРёСЃС‚СѓРІР°С‡Р°РјРё",
     "status": 4,
     "created_at": "2020-08-11T11:38:19.364Z",
     "updated_at": "2020-08-11T19:41:00.663Z"
@@ -174,8 +174,8 @@
   "fields": {
     "created_by_user": null,
     "assigned_to_user": null,
-    "title": "Моделі",
-    "description": "Продумати моделі для проекту",
+    "title": "РњРѕРґРµР»С–",
+    "description": "РџСЂРѕРґСѓРјР°С‚Рё РјРѕРґРµР»С– РґР»СЏ РїСЂРѕРµРєС‚Сѓ",
     "status": 1,
     "created_at": "2020-08-11T11:42:06.542Z",
     "updated_at": "2020-08-11T11:42:06.542Z"
@@ -187,7 +187,7 @@
   "fields": {
     "created_by_user": null,
     "assigned_to_user": null,
-    "title": "Тест",
+    "title": "РўРµСЃС‚",
     "description": "Title is enough",
     "status": 1,
     "created_at": "2020-08-11T11:44:48.029Z",
@@ -200,7 +200,7 @@
   "fields": {
     "created_by_user": null,
     "assigned_to_user": null,
-    "title": "Тест1",
+    "title": "РўРµСЃС‚1",
     "description": "Title is enough",
     "status": 5,
     "created_at": "2020-08-11T11:45:00.644Z",
@@ -213,7 +213,7 @@
   "fields": {
     "created_by_user": null,
     "assigned_to_user": null,
-    "title": "Тестова від админа",
+    "title": "РўРµСЃС‚РѕРІР° РІС–Рґ Р°РґРјРёРЅР°",
     "description": "Title is enough",
     "status": 1,
     "created_at": "2020-08-11T13:13:44.341Z",
