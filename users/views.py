@@ -1,11 +1,12 @@
 from django.contrib.auth import login, authenticate
 from django.contrib.auth import logout as logout_
-from django.contrib.auth.views import LoginView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
+from rest_framework import viewsets
 
 from users import models
+from users.api.serializers import UserSerializer
 from users.forms import RegisterForm, LoginForm
 from users.models import User
 
@@ -78,3 +79,9 @@ class UserListView(ListView):
             return super().get(self, request, *args, **kwargs)
         else:
             return redirect('/')
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+

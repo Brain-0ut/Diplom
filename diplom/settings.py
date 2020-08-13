@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users',
     'mytrello',
     'crispy_forms',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

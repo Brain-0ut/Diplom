@@ -3,8 +3,10 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView, ListView, CreateView, DeleteView
+from rest_framework import viewsets
 
 from mytrello import forms
+from mytrello.api.serializers import CardSerializer
 from mytrello.models import Card
 from users.models import User
 
@@ -109,3 +111,18 @@ class DeleteCard(DeleteView):
     form_class = forms.CardForm
     success_url = reverse_lazy('index')
     template_name = 'mytrello/delete_card.html'
+
+
+class CardViewSet(viewsets.ModelViewSet):
+    queryset = Card.objects.all()
+    serializer_class = CardSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
+
+    def get_queryset(self):
+        status = self.request.GET.get('status', None)
+        if status:
+            return Card.objects.all().filter(status=status)
+        else:
+            return Card.objects.all().filter()

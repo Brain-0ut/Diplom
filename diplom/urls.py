@@ -18,19 +18,19 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from diplom import settings
-from mytrello import views
+from mytrello import views as mytrello_view
+from users import views as users_view
 
 router = routers.DefaultRouter()
-# router.register(r'cards', CardViewSet)
-# router.register(r'users', UserViewSet)
+router.register(r'cards', mytrello_view.CardViewSet)
+router.register(r'users', users_view.UserViewSet)
 
 urlpatterns = [
-                  path('', views.index, name='index'),
+                  path('', mytrello_view.index, name='index'),
                   path('api/', include(router.urls)),
                   path('admin/', admin.site.urls),
                   path('mytrello/', include('mytrello.urls')),
                   path('users/', include('users.urls')),
-                  # path('about/', RedirectView.as_view(url='/diplom/about_us')),
               ]
 
 if settings.DEBUG:
