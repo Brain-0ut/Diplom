@@ -12,18 +12,18 @@ from users.models import User
 def index(request):
     if request.user.id:
         user = User.objects.get(id=request.user.id)
-        # not_confirmed = User.objects.filter(admin_confirmed=False).count()
         if request.user.is_authenticated and user.admin_confirmed:
-            # context = Card.objects.filter(created_by_user=user.id)
             return redirect('homepage')
-            # return render(request, 'mytrello/index.html', {'context': context, 'not_confirmed': not_confirmed})
     return render(request, 'users/index.html')
 
 
 class Index(ListView):
     model = Card
     template_name = 'mytrello/index.html'
-    not_confirmed = User.objects.filter(admin_confirmed=False).count()
+
+    @classmethod
+    def not_confirmed(cls):
+        return User.objects.filter(admin_confirmed=False).count()
 
     def _filter(self, q):
         return q.filter(Q(assigned_to_user=self.request.user) | Q(created_by_user=self.request.user))

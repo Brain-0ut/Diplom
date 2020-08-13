@@ -6,7 +6,7 @@ from django.db import models
 
 class User(AbstractUser):
     token = models.CharField(max_length=32, blank=True, null=True)
-    admin_confirmed = models.BooleanField(default=False)
+    admin_confirmed = models.BooleanField(default=False, blank=True, null=True)
 
     def save(self, *args, **kwargs):
         self.email = self.email.lower()

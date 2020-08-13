@@ -1,4 +1,4 @@
-"""Diplom URL Configuration
+"""diplom URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -17,7 +17,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from Diplom import settings
+from diplom import settings
 from mytrello import views
 
 router = routers.DefaultRouter()
@@ -30,7 +30,7 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('mytrello/', include('mytrello.urls')),
                   path('users/', include('users.urls')),
-                  # path('about/', RedirectView.as_view(url='/Diplom/about_us')),
+                  # path('about/', RedirectView.as_view(url='/diplom/about_us')),
               ]
 
 if settings.DEBUG:
